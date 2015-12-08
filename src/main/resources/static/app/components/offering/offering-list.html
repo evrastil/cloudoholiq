@@ -63,11 +63,8 @@
             <ul class="widget-products">
                 <li ng-repeat="service in offerings">
                     <a href="#/services/{{service.id}}">
-							<span class="img">
-								<img ng-src="api/blob-store/{{service.icon}}" alt=""/>
-							</span>
-							
 							<span class="product clearfix">
+                                <img ng-src="api/blob-store/{{service.icon}}" width="50" height="50"/>
 								<span class="name">
 									{{service.name}}
 								</span>

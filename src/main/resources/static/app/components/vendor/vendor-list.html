@@ -1,30 +1,17 @@
 <div class="row" ng-if="($index % 4 == 0)" ng-repeat="vendor in vendors">
-<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="vendor in vendors.slice($index, $index+4)">
-    <div class="main-box clearfix profile-box-stats">
-        <div class="main-box-body clearfix">
-            <div class="profile-box-header gray-bg clearfix">
-                <h2>{{vendor.name}}</h2>
-                <div class="job-position">
-                    {{vendor.description}}
-                </div>
-                <img src="api/blob-store/{{vendor.icon}}" alt="" class="profile-img img-responsive" />
-            </div>
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="vendor in vendors.slice($index, $index+4)">
 
-            <div class="profile-box-footer clearfix">
-                <a ng-href="#/services?q=vendor@{{vendor.id}}">
-                    <span class="value">50</span>
-                    <span class="label">Services</span>
-                </a>
-                <a href="">
-                    <span class="value">5</span>
-                    <span class="label">New services</span>
-                </a>
-                <a href="">
-                    <span class="value">8</span>
-                    <span class="label">Categories</span>
-                </a>
-            </div>
-        </div>
+        <a ng-href="#/services?q=vendor@{{vendor.id}}">
+            <img ng-src="api/blob-store/{{vendor.icon}}" width="50" height="50" class="img-responsive"
+                 alt="Generic placeholder thumbnail">
+        </a>
+        <h4>{{vendor.name}}</h4>
+        <span class="text-muted">{{vendor.description}}</span>
+
+        <p>
+            <a class="btn btn-sm btn-primary" href="#" role="button">20 Services</a>
+            <a class="btn btn-sm btn-default" href="#" role="button">3 Categories</a>
+        </p>
     </div>
 </div>
 </div>
