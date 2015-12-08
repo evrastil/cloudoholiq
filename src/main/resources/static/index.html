@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" ng-app="catalogApp">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Cloudoholiq</title>
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap-css-only/css/bootstrap.min.css" />
+	
+	<!--
+	If you need RTL support just include here RTL CSS file <link rel="stylesheet" type="text/css" href="css/libs/bootstrap-rtl.min.css" />
+	And add "rtl" class to <body> element - e.g. <body class="rtl"> 
+	-->
+	
+	<!-- libraries -->
+	<link rel="stylesheet" type="text/css" href="./lib/components-font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./lib/angular/angular-csp.css" />
+
+	<!-- Favicon -->
+	<link type="image/x-icon" href="./img/logo-small-black.png" rel="shortcut icon" />
+
+	<!-- google font libraries -->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div id="theme-wrapper">
+		<header class="navbar" id="header-navbar">
+			<div class="container">
+				<a href="#/dasboard" id="logo" class="navbar-brand">
+					<img src="img/logo.png" alt="" class="normal-logo logo-white"/>
+					<img src="img/logo-black.png" alt="" class="normal-logo logo-black"/>
+					<img src="img/logo-small.png" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
+				</a>
+
+				<div class="clearfix">
+					<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="fa fa-bars"></span>
+					</button>
+					
+					<div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+						<ul class="nav navbar-nav pull-left">
+							<li>
+								<a class="btn" id="make-small-nav">
+									<i class="fa fa-bars"></i>
+								</a>
+							</li>
+							<li class="dropdown hidden-xs">
+								<a class="btn dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-bell"></i>
+									<span class="count">8</span>
+								</a>
+								<ul class="dropdown-menu notifications-list">
+									<li class="pointer">
+										<div class="pointer-inner">
+											<div class="arrow"></div>
+										</div>
+									</li>
+									<li class="item-header">You have 6 new notifications</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-comment"></i>
+											<span class="content">New comment on ‘Awesome P...</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-plus"></i>
+											<span class="content">New user registration</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-envelope"></i>
+											<span class="content">New Message from George</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-shopping-cart"></i>
+											<span class="content">New purchase</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-eye"></i>
+											<span class="content">New order</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item-footer">
+										<a href="">
+											View all notifications
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown hidden-xs">
+								<a class="btn dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-envelope-o"></i>
+									<span class="count">16</span>
+								</a>
+								<ul class="dropdown-menu notifications-list messages-list">
+									<li class="pointer">
+										<div class="pointer-inner">
+											<div class="arrow"></div>
+										</div>
+									</li>
+									<li class="item first-item">
+										<a href="">
+											<img src="img/samples/messages-photo-1.png" alt=""/>
+											<span class="content">
+												<span class="content-headline">
+													George Clooney
+												</span>
+												<span class="content-text">
+													Look, just because I don't be givin' no man a foot massage don't make it 
+													right for Marsellus to throw...
+												</span>
+											</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<img src="img/samples/messages-photo-2.png" alt=""/>
+											<span class="content">
+												<span class="content-headline">
+													Emma Watson
+												</span>
+												<span class="content-text">
+													Look, just because I don't be givin' no man a foot massage don't make it 
+													right for Marsellus to throw...
+												</span>
+											</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<img src="img/samples/messages-photo-3.png" alt=""/>
+											<span class="content">
+												<span class="content-headline">
+													Robert Downey Jr.
+												</span>
+												<span class="content-text">
+													Look, just because I don't be givin' no man a foot massage don't make it 
+													right for Marsellus to throw...
+												</span>
+											</span>
+											<span class="time"><i class="fa fa-clock-o"></i>13 min.</span>
+										</a>
+									</li>
+									<li class="item-footer">
+										<a href="">
+											View all messages
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown hidden-xs">
+								<a class="btn dropdown-toggle" data-toggle="dropdown">
+									New Item
+									<i class="fa fa-caret-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="item">
+										<a href="">
+											<i class="fa fa-archive"></i> 
+											New Product
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-shopping-cart"></i> 
+											New Order
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-sitemap"></i> 
+											New Category
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											<i class="fa fa-file-text"></i> 
+											New Page
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown hidden-xs">
+								<a class="btn dropdown-toggle" data-toggle="dropdown">
+									English
+									<i class="fa fa-caret-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="item">
+										<a href="">
+											Spanish
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											German
+										</a>
+									</li>
+									<li class="item">
+										<a href="">
+											Italian
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="nav-no-collapse pull-right" id="header-nav">
+						<ul class="nav navbar-nav pull-right">
+							<li class="dropdown profile-dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown">
+									<img src="img/user.png" alt=""/>
+									<span class="hidden-xs">User</span> <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="#/pages/user-profile"><i class="fa fa-user"></i>Profile</a></li>
+									<li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
+									<li><a href=""><i class="fa fa-envelope-o"></i>Messages</a></li>
+									<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="page-wrapper" class="container">
+			<div class="row">
+				<div id="nav-col">
+					<section id="col-left" class="col-left-nano">
+						<div id="col-left-inner" class="col-left-nano-content">
+							<!--<div id="user-left-box" class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">-->
+								<!--<img src="img/user.png" alt=""/>-->
+								<!--<div class="user-box">-->
+									<!--<span class="name">-->
+										<!--<a class="dropdown-toggle" data-toggle="dropdown">-->
+											<!--User name-->
+											<!--<i class="fa fa-angle-down"></i>-->
+										<!--</a>-->
+										<!--<ul class="dropdown-menu">-->
+											<!--<li><a href="#/pages/user-profile"><i class="fa fa-user"></i>Profile</a></li>-->
+											<!--<li><a href=""><i class="fa fa-cog"></i>Settings</a></li>-->
+											<!--<li><a href=""><i class="fa fa-envelope-o"></i>Messages</a></li>-->
+											<!--<li><a href=""><i class="fa fa-power-off"></i>Logout</a></li>-->
+										<!--</ul>-->
+									<!--</span>-->
+									<!--<span class="status">-->
+										<!--<i class="fa fa-circle"></i> Online-->
+									<!--</span>-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav" bs-navbar>
+								<ul class="nav nav-pills nav-stacked">
+									<li class="nav-header nav-header-first hidden-sm hidden-xs">
+										Navigation
+									</li>
+									<li data-match-route="/dasboard">
+										<a href="#/dashboard">
+											<i class="fa fa-dashboard"></i>
+											<span>Dashboard</span>
+											<!--<span class="label label-primary label-circle pull-right">28</span>-->
+										</a>
+									</li>
+									<li data-match-route="/categories">
+										<a href="#/categories">
+											<i class="fa fa-space-shuttle	"></i>
+											<span>Categories</span>
+											<!--<span class="label label-primary label-circle pull-right">28</span>-->
+										</a>
+									</li>
+									<li data-match-route="/vendors">
+										<a href="#/vendors">
+											<i class="fa fa-globe"></i>
+											<span>Vendors</span>
+											<!--<span class="label label-primary label-circle pull-right">28</span>-->
+										</a>
+									</li>
+									<li data-match-route="/services">
+										<a href="#/services">
+											<i class="fa fa-cubes"></i>
+											<span>Services</span>
+											<!--<span class="label label-primary label-circle pull-right">28</span>-->
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<div id="nav-col-submenu"></div>
+				</div>
+				<div id="content-wrapper">
+					<div class="row">
+						<div class="col-lg-12">
+							
+							<div class="slide-main-container">
+								<div ng-view autoscroll="true" class="slide-main-animation"></div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div ng-include='"footer.html"'></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- global scripts -->
+
+	<script src="./lib/jquery/dist/jquery.min.js"></script>
+	<script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- angular libs -->
+	<script src="./lib/angular/angular.min.js"></script>
+	<script src="./lib/angular-route/angular-route.min.js"></script>
+	<script src="./lib/angular-animate/angular-animate.min.js"></script>
+	<script src="./lib/angular-resource/angular-resource.min.js"></script>
+
+	<script src="./app/app.js"></script>
+	<script src="./app/directives.js"></script>
+	<script src="./app/resource.js"></script>
+
+	<script src="./app/controllers.js"></script>
+	<script src="./app/components/category/category-controller.js"></script>
+	<script src="./app/components/offering/offering-controller.js"></script>
+	<script src="./app/components/user/user-controller.js"></script>
+	<script src="./app/components/vendor/vendor-controller.js"></script>
+	<script src="./app/components/dashboard/dashboard-controller.js"></script>
+
+	<script src="./app/services.js"></script>
+	<script src="./app/components/category/category-service.js"></script>
+	<script src="./app/components/offering/offering-service.js"></script>
+	<script src="./app/components/user/user-service.js"></script>
+	<script src="./app/components/vendor/vendor-service.js"></script>
+
+</body>
+</html>

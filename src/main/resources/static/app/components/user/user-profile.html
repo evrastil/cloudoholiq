@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>User profile</h2>
+
+    <h3>User : {{userDetails.username}}</h3>
+
+    <p>
+        Company: {{userDetails.organization.name}}
+    </p>
+
+    <ul ng-repeat="auth in userInfo.authorities">
+        <li>role - {{userDetails.authority}}</li>
+    </ul>
+</div>

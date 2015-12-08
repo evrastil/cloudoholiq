@@ -1,0 +1,43 @@
+<div class="row" ng-if="($index % 4 == 0)" ng-repeat="category in categories">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-if="true" ng-repeat="category in categories.slice($index, $index+4)">
+    <div class="main-box clearfix profile-box-contact" >
+        <div class="main-box-body clearfix">
+            <div class="profile-box-header clearfix" style="background-color: {{category.label}}">
+                <img ng-src="api/blob-store/{{category.icon}}" alt="" class="profile-img img-responsive"/>
+
+                <h2>{{category.name}}</h2>
+
+                <div class="job-position">
+                    {{category.description}}
+                </div>
+                <!--<ul class="contact-details">-->
+                <!--<li>-->
+                <!--<i class="fa fa-map-marker"></i> New York-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<i class="fa fa-envelope"></i> angelina@jolie.com-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<i class="fa fa-phone"></i> (329) 239-3342-->
+                <!--</li>-->
+                <!--</ul>-->
+            </div>
+
+            <div class="profile-box-footer clearfix">
+                <a ng-href="#/services?q=category@{{category.id}}">
+                    <span class="value">{{category.serviceCount}}</span>
+                    <span class="label">Services</span>
+                </a>
+                <a href="">
+                    <span class="value">53</span>
+                    <span class="label">New services</span>
+                </a>
+                <a href="">
+                    <span class="value">54</span>
+                    <span class="label">Vendors</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

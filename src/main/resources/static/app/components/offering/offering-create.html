@@ -1,0 +1,62 @@
+<div class="container">
+    <a class="btn btn-default" ng-href="#/admin/services">Administrace</a>
+
+    <h4 class="modal-title" id="myModalLabel">Create new Offering</h4>
+
+    <div>
+        <div>
+            Kategorie:
+        </div>
+
+        <select ng-model="serviceItem.category.id" class="form-control">
+            <option ng-repeat="category in categories" price="{{category.id}}">{{category.name}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <div>
+            Název:
+        </div>
+        <input type="text" ng-model="serviceItem.name" placeholder="název" class="form-control">
+    </div>
+    <div>
+        <div>
+            Popis:
+        </div>
+        <textarea type="text" ng-model="serviceItem.description" rows="5" cols="10" class="form-control"
+                  placeholder="popis..."></textarea>
+    </div>
+    <!--<input type="file" ng-file-select="onFileSelect($files)" >-->
+    <!--<input type="file" ng-file-select="onFileSelect($files)" multiple>-->
+    <div>
+        <img ng-file-drop="onFileSelect($files)"
+             ng-file-drag-over-class="optional-css-class"
+             ng-show="dropSupported"
+             data-src="holder.js/260x180" alt="260x180"
+             src="{{serviceItem.imageUrl}}"
+             style="width: 150px; height: 150px;">
+    </div>
+
+    <div>
+        <div ng-file-drop-available="dropSupported=true"
+             ng-show="!dropSupported">HTML5 Drop File is not supported!
+        </div>
+    </div>
+    <div>
+        <div class="fileUpload btn btn-primary" style="padding-left: 0px; margin-left: 0px;">
+            <span>Nahrát obrázek</span>
+            <input type="file" class="upload" ng-file-select="onFileSelect($files)"/>
+        </div>
+    </div>
+    <!--<div ng-file-drop="onFileSelect($files)"-->
+    <!--ng-file-drag-over-class="optional-css-class"-->
+    <!--ng-show="dropSupported">drop files here-->
+    <!--</div>-->
+
+    <!--<button ng-click="upload.abort()">Cancel Upload</button>-->
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+    <a class="btn btn-default" ng-href="#/admin/services/list">Cancel</a>
+</div>
