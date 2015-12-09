@@ -1,4 +1,4 @@
-package org.cloudoholiq.seed;
+package org.cloudoholiq.tools.seed;
 
 import com.github.javafaker.Faker;
 import org.cloudoholiq.catalog.common.StringUtil;

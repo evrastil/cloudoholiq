@@ -82,3 +82,15 @@ catalogDirectives.directive('showtab', function() {
         }
     };
 });
+
+catalogDirectives.directive('gridlist', function() {
+    return {
+        link: function (scope, element, attrs) {
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');
+    $('#products .item').addClass('grid-group-item');});
+});
+        }
+    };
+});

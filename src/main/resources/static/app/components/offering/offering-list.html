@@ -58,39 +58,52 @@
         <header class="main-box-header clearfix">
             <h2>Services</h2>
         </header>
+        <div class="well well-sm">
+            <strong>Category Title</strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                    class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
+        </div>
 
-        <div class="main-box-body clearfix">
-            <ul class="widget-products">
-                <li ng-repeat="service in offerings">
-                    <a href="#/services/{{service.id}}">
-							<span class="product clearfix">
-                                <img ng-src="api/blob-store/{{service.icon}}" width="50" height="50"/>
-								<span class="name">
-									{{service.name}}
-								</span>
-
-                                <span class="warranty" ng-repeat="group in service.propertyGroups">
-                                    <span ng-repeat="property in group.properties">
+        <div id="products" class="row list-group" ng-if="($index % 4 == 0)" ng-repeat="service in offerings">
+            <div class="item  col-xs-3 col-lg-3" ng-if="true" ng-repeat="service in offerings.slice($index, $index+4)">
+                <div class="thumbnail">
+                    <img class="group list-group-image" ng-src="api/blob-store/{{service.icon}}" width="80" height="80" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">
+                            {{service.name}}</h4>
+                        <p class="group inner list-group-item-text">
+                            {{service.description}}</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6" ng-repeat="group in service.propertyGroups">
+                                           <span ng-repeat="property in group.properties">
                                     <span ng-if="property.tagged">
 									        <i class="fa fa-tag"></i> {{property.name}} {{property.value}} {{property.unit}}
                                     </span>
                                     </span>
-								</span>
-								<span class="warranty">
-									<i class="fa fa-home"></i> {{service.categoryName}}
-								</span>
-                                <span class="warranty">
-									<i class="fa fa-home"></i> {{service.vendorName}}
-								</span>
-                                <span class="price" ng-if="service.pricing">
-									<i class="fa fa-money"></i> {{service.pricing.currencyType}} {{service.pricing.price}}/{{service.pricing.recurrencePeriodType}}
-								</span>
-							</span>
-                    </a>
-                </li>
-
-            </ul>
-
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead" ng-if="service.pricing">
+                                    {{service.pricing.currencyType}} {{service.pricing.price}}/{{service.pricing.recurrencePeriodType}}</p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#/services/{{service.id}}">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+</script>
