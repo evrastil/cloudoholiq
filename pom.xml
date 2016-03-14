@@ -116,6 +116,12 @@
             <version>0.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>ru.yandex.qatools.embed</groupId>
+            <artifactId>postgresql-embedded</artifactId>
+            <version>1.10</version>
+        </dependency>
+
     </dependencies>
 
 

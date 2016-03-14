@@ -1,12 +1,13 @@
 package org.cloudoholiq.catalog.api;
 
-import org.cloudoholiq.catalog.Application;
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.common.BlobMetadata;
 import org.glassfish.jersey.media.multipart.MultiPart;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.media.multipart.file.StreamDataBodyPart;
 import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,9 @@ public class BlobStoreApiTest {
     private String host = "http://localhost";
 
     private Client client = ClientBuilder.newClient().register(MultiPartFeature.class);
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Test
     public void testFindById() throws Exception {

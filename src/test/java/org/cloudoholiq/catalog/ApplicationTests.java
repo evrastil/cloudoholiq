@@ -16,6 +16,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import ru.yandex.qatools.embed.postgresql.PostgresExecutable;
+import ru.yandex.qatools.embed.postgresql.PostgresProcess;
+import ru.yandex.qatools.embed.postgresql.PostgresStarter;
+import ru.yandex.qatools.embed.postgresql.config.PostgresConfig;
 
 import javax.sql.DataSource;
 
@@ -103,13 +107,29 @@ public class ApplicationTests {
     @Bean
     public DataSource dataSource() {
         final PGPoolingDataSource source = new PGPoolingDataSource();
-        source.setDataSourceName("cloudoholiq_test");
-        source.setServerName("localhost");
-        source.setDatabaseName("cloudoholiq_test");
-        source.setUser("postgres");
-        source.setPassword("postgres");
+        source.setDataSourceName(PgRule.config().storage().dbName());
+        source.setServerName(PgRule.config().net().host());
+        source.setDatabaseName(PgRule.config().storage().dbName());
+        source.setUser(PgRule.config().credentials().username());
+        source.setPassword(PgRule.config().credentials().password());
+        source.setPortNumber(PgRule.config().net().port());
         source.setMaxConnections(10);
         return source;
+
+        //        PostgresStarter<PostgresExecutable, PostgresProcess> runtime = PostgresStarter.getDefaultInstance();
+//        final PostgresConfig config = PostgresConfig.defaultWithDbName("cloudoholiq_test");
+//        PostgresExecutable exec = runtime.prepare(config);
+//        PostgresProcess process = exec.start();
+//
+//        // connecting to a running Postgres
+//        String url = format("jdbc:postgresql://%s:%s/%s?user=%s&password=%s",
+//                config.net().host(),
+//                config.net().port(),
+//                config.storage().dbName(),
+//                config.credentials().username(),
+//                config.credentials().password()
+//        );
+//        Connection conn = DriverManager.getConnection(url);
     }
 
 
