@@ -8,6 +8,7 @@ import ru.yandex.qatools.embed.postgresql.config.AbstractPostgresConfig;
 import ru.yandex.qatools.embed.postgresql.config.PostgresConfig;
 
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.PRODUCTION;
+import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V9_4;
 
 public class PgRule extends ExternalResource {
     protected PostgresProcess process;
