@@ -1,10 +1,12 @@
 package org.cloudoholiq.catalog.api;
 
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Category;
 import org.cloudoholiq.catalog.model.property.group.CategoryFilterGroup;
 import org.cloudoholiq.catalog.model.property.group.FilterGroup;
 import org.cloudoholiq.catalog.model.property.group.FilterGroupDto;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +38,9 @@ public class FilterApiTest {
     private String host = "http://localhost";
 
     private Client client = ClientBuilder.newClient();
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Test
     public void testFindAll(){

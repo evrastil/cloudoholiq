@@ -1,9 +1,9 @@
 package org.cloudoholiq.catalog.api;
 
-import org.cloudoholiq.catalog.Application;
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Category;
-import org.glassfish.jersey.jackson.JacksonFeature;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +34,9 @@ public class CategoryApiTest {
     private String host = "http://localhost";
 
     private Client client = ClientBuilder.newClient();
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
 //    @Test
 //    public void testList() throws Exception {

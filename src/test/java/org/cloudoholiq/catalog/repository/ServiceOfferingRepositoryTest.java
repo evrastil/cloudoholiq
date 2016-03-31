@@ -1,7 +1,9 @@
 package org.cloudoholiq.catalog.repository;
 
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Category;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import static org.junit.Assert.assertNotNull;
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
 public class ServiceOfferingRepositoryTest {
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Autowired
     private CategoryRepository categoryRepository;

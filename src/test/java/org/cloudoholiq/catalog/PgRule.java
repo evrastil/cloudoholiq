@@ -1,35 +1,64 @@
 package org.cloudoholiq.catalog;
 
+import de.flapdoodle.embed.process.runtime.Executable;
 import org.junit.rules.ExternalResource;
-import ru.yandex.qatools.embed.postgresql.PostgresExecutable;
-import ru.yandex.qatools.embed.postgresql.PostgresProcess;
 import ru.yandex.qatools.embed.postgresql.PostgresStarter;
 import ru.yandex.qatools.embed.postgresql.config.AbstractPostgresConfig;
 import ru.yandex.qatools.embed.postgresql.config.PostgresConfig;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.PRODUCTION;
-import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V9_4;
 
 public class PgRule extends ExternalResource {
-    protected PostgresProcess process;
-    protected static PostgresConfig config;
+
+    Executable exec;
+    private static PostgresConfig config;
+
     @Override
     protected void before() throws Throwable {
-        PostgresStarter<PostgresExecutable, PostgresProcess> runtime = PostgresStarter.getDefaultInstance();
-        config = new PostgresConfig(PRODUCTION, new AbstractPostgresConfig.Net(
-                "localhost", 3578
-        ), new AbstractPostgresConfig.Storage("cloudoholiq_test", "temp_cloudoholiq"), new AbstractPostgresConfig.Timeout(),
+        PostgresStarter runtime = PostgresStarter.getDefaultInstance();
+        config = new PostgresConfig(PRODUCTION, new AbstractPostgresConfig.Net("localhost", findFreePort()),
+                new AbstractPostgresConfig.Storage("test"), new AbstractPostgresConfig.Timeout(),
                 new AbstractPostgresConfig.Credentials("user", "password"));
-        PostgresExecutable exec = runtime.prepare(config);
-        process = exec.start();
+        exec = runtime.prepare(config);
+        exec.start();
+
+    }
+
+    public static PostgresConfig getPostgresConfig() {
+        return config;
     }
 
     @Override
     protected void after() {
-        process.stop();
+        exec.stop();
     }
 
-    public static PostgresConfig config(){
-        return config;
+    public static int findFreePort() {
+        ServerSocket socket = null;
+        try {
+            socket = new ServerSocket(0);
+            socket.setReuseAddress(true);
+            int port = socket.getLocalPort();
+            try {
+                socket.close();
+            } catch (IOException ignored) {
+                // Ignore IOException on close()
+            }
+            return port;
+        } catch (IOException ignored) {
+            // Ignore IOException on open
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException ignored) {
+                    // Ignore IOException on close()
+                }
+            }
+        }
+        throw new IllegalStateException("Could not find a free TCP/IP port to start embedded Jetty HTTP Server on");
     }
 }

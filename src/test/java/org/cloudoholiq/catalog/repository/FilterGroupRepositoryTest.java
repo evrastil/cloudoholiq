@@ -1,11 +1,13 @@
 package org.cloudoholiq.catalog.repository;
 
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Category;
 import org.cloudoholiq.catalog.model.property.group.FilterGroup;
 import org.cloudoholiq.catalog.model.search.Expression;
 import org.cloudoholiq.catalog.model.search.Filter;
 import org.cloudoholiq.catalog.model.search.Type;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ import static org.junit.Assert.assertTrue;
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
 public class FilterGroupRepositoryTest {
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Autowired
     private FilterGroupRepository filterGroupRepository;

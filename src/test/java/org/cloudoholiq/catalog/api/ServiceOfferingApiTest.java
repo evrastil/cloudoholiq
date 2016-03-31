@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.common.StringUtil;
 import org.cloudoholiq.catalog.model.ServiceOffering;
 import org.cloudoholiq.catalog.model.property.Property;
@@ -20,6 +21,7 @@ import org.cloudoholiq.catalog.repository.FilterRepository;
 import org.cloudoholiq.catalog.repository.ServiceOfferingRepository;
 import org.cloudoholiq.catalog.repository.SortingRepository;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +58,9 @@ public class ServiceOfferingApiTest {
     @Value("${local.server.port}")
     private int port;
     private String host = "http://localhost";
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     private Client client = ClientBuilder.newClient();
 

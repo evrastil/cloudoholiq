@@ -3,9 +3,11 @@ package org.cloudoholiq.catalog.repository;
 import com.github.javafaker.Faker;
 import org.cloudoholiq.catalog.Application;
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Category;
 import org.cloudoholiq.catalog.model.ServiceOffering;
 import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ import static org.junit.Assert.*;
 public class CategoryRepositoryTest {
 
     private final Faker faker = new Faker();
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Autowired
     private ServiceOfferingRepository serviceOfferingRepository;

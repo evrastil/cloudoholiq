@@ -30,15 +30,14 @@ import java.util.UUID;
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
 public class BlobStoreApiTest {
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     @Value("${local.server.port}")
     private int port;
     private String host = "http://localhost";
 
     private Client client = ClientBuilder.newClient().register(MultiPartFeature.class);
-
-    @ClassRule
-    public static PgRule pgRule = new PgRule();
 
     @Test
     public void testFindById() throws Exception {

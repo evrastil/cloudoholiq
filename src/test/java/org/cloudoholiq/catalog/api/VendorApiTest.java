@@ -2,7 +2,9 @@ package org.cloudoholiq.catalog.api;
 
 import org.cloudoholiq.catalog.Application;
 import org.cloudoholiq.catalog.ApplicationTests;
+import org.cloudoholiq.catalog.PgRule;
 import org.cloudoholiq.catalog.model.Vendor;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +30,9 @@ public class VendorApiTest {
     @Value("${local.server.port}")
     private int port;
     private String host = "http://localhost";
+
+    @ClassRule
+    public static PgRule pgRule = new PgRule();
 
     private Client client = ClientBuilder.newClient();
     
